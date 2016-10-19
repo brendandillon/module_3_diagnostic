@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe FuelStation do
-  let(fuel_station) do
-    FuelStation.new({
+  let(:fuel_station) do
+    FuelStation.new(JSON.parse('{
       "access_days_time": "24 hours daily",
       "cards_accepted": null,
       "date_last_confirmed": "2016-10-19",
@@ -47,7 +47,7 @@ RSpec.describe FuelStation do
         ]
       },
       "distance": 0.3117
-    })
+    }'))
   end      
   
   it 'has a name' do
