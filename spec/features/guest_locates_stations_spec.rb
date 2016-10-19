@@ -16,8 +16,7 @@ RSpec.feature 'a guest searches by zip code' do
       click_on 'Locate' 
 
       expect(page).to have_current_path('/search?utf8=%E2%9C%93&q=80203&commit=Locate')
-      expect(page).to have_content('10.')
-      expect(page).not_to have_content('11.')
+      expect(page).to have_css('ol li', count: 10)
 
       expect(page).to have_content(first_station[:name])
       expect(page).to have_content(first_station[:address])
