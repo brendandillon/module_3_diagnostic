@@ -6,6 +6,16 @@ class SearchController < ApplicationController
 
     response = conn.get do |req|
       req.url 'nearest.json'
-      req.params[:
+      req.params[:api_key] = ENV['nrel_api_key']
+      req.params[:limit] = '10'
+      req.params[:location] = params[:q]
+      req.params[:radius] = '6.0'
+      req.params[:fuel_type] = 'ELEC,LPG'
+    end
+
+    @stations = []
+    response.body['fuel_stations'].each do |station_data|
+      @stations << FuelStation.new(station_data)
+    end
   end
 end
