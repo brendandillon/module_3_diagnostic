@@ -55,7 +55,7 @@ RSpec.describe FuelStation do
   end
 
   it 'has an address' do
-    expect(fuel_station.address).to eq('800 Acoma St')
+    expect(fuel_station.address).to eq('800 Acoma St, Denver CO 80204')
   end
 
   it 'has fuel types' do

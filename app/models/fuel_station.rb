@@ -19,11 +19,18 @@ class FuelStation
   end
 
   def fuel_types
+    if @fuel_types == 'ELEC'
+      return 'Electric'
+    elsif @fuel_types == 'LPG'
+      return 'Propane'
+    end
   end
 
   def distance
+    @distance.round(2).to_s + " miles"
   end
 
   def access_times
+    @access_times
   end
 end

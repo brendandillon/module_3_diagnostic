@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'a guest searches by zip code' do
-  xscenario 'they see a list of nearby stations' do
+  scenario 'they see a list of nearby stations' do
     first_station = {
       name: 'UDR',
-      address: '800 Acoma St',
+      address: '800 Acoma St, Denver CO 80204',
       fuel_types: 'Electric',
       distance: '0.31 miles',
       access_times: '24 hours daily'
