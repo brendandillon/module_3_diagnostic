@@ -2,27 +2,29 @@ require 'rails_helper'
 
 RSpec.feature 'a guest searches by zip code' do
   scenario 'they see a list of nearby stations' do
-    first_station = {
-      name: 'UDR',
-      address: '800 Acoma St, Denver CO 80204',
-      fuel_types: 'Electric',
-      distance: '0.31 miles',
-      access_times: '24 hours daily'
-    }
+    VCR.use_cassette('search#index') do
+      first_station = {
+        name: 'UDR',
+        address: '800 Acoma St, Denver CO 80204',
+        fuel_types: 'Electric',
+        distance: '0.31 miles',
+        access_times: '24 hours daily'
+      }
 
-    visit '/'
-    fill_in 'q', with: '80203'
-    click_on 'Locate' 
+      visit '/'
+      fill_in 'q', with: '80203'
+      click_on 'Locate' 
 
-    expect(page).to have_current_path('/search?utf8=%E2%9C%93&q=80203&commit=Locate')
-    expect(page).to have_content('10.')
-    expect(page).not_to have_content('11.')
+      expect(page).to have_current_path('/search?utf8=%E2%9C%93&q=80203&commit=Locate')
+      expect(page).to have_content('10.')
+      expect(page).not_to have_content('11.')
 
-    expect(page).to have_content(first_station[:name])
-    expect(page).to have_content(first_station[:address])
-    expect(page).to have_content(first_station[:fuel_types])
-    expect(page).to have_content(first_station[:distance])
-    expect(page).to have_content(first_station[:access_times])
+      expect(page).to have_content(first_station[:name])
+      expect(page).to have_content(first_station[:address])
+      expect(page).to have_content(first_station[:fuel_types])
+      expect(page).to have_content(first_station[:distance])
+      expect(page).to have_content(first_station[:access_times])
+    end
   end
 end
 #As a user

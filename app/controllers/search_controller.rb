@@ -12,9 +12,10 @@ class SearchController < ApplicationController
       req.params[:radius] = '6.0'
       req.params[:fuel_type] = 'ELEC,LPG'
     end
+    raw_stations = JSON.parse(response.body)['fuel_stations']
 
     @stations = []
-    response.body['fuel_stations'].each do |station_data|
+    raw_stations.each do |station_data|
       @stations << FuelStation.new(station_data)
     end
   end

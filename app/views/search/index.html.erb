@@ -1,24 +1,11 @@
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Fuel Types</th>
-      <th>Distance</th>
-      <th>Access Times</th>
-    </tr>
-  </thead>
-  <tbody>
-    <ol>
-      <% @stations.each do |station| %>
-        <li><tr>
-        <td><%= station.name %></td>
-        <td><%= station.address %></td>
-        <td><%= station.fuel_types %></td>
-        <td><%= station.distance %></td>
-        <td><%= station.access_times %></td>
-        </li></tr>
-      <% end %>
-    </ol>
-  </tbody>
-</table>
+<ol>
+  <% @stations.each do |station| %>
+    <li>
+      <%= station.name %>
+      <%= station.address %>
+      <%= station.fuel_types %>
+      <%= station.distance %>
+      <%= station.access_times %>
+    </li>
+  <% end %>
+</ol>
